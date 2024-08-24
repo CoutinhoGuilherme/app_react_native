@@ -1,12 +1,20 @@
 import {View} from "react-native"
 import ItemProduto from "../ItemProduto"
+import Style from "@/app/Styles/Default"
+import { ScrollView} from "react-native-gesture-handler"
 
 function ListaProdutos({produtos}:
-    {produtos:{nome: string, preco: number}[]}) {
+    {produtos:{id: number, nome: string, preco: number}[]}) {
     return (
-        <View>
-            {produtos.map((p) => <ItemProduto produto={p}></ItemProduto>)}
+        <ScrollView>
+
+        <View style={Style.container}>
+            {produtos.map((p) => <ItemProduto produto={p} key={p.id} >
+
+            </ItemProduto>)}
         </View>
+
+        </ScrollView>
     )
 }
 

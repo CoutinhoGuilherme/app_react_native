@@ -754,10 +754,10 @@ import { useAnimatedKeyboard } from "react-native-reanimated";
 import ListaProdutos from "./Componentes/Adaptadores/ListaProdutos";
 
 const produto = [
-  {id: 1, nome: "Coca-Cola", preco: 10.5},
-  {id: 1, nome: "Pepsi", preco: 9.5},
-  {id: 1, nome: "Fanta", preco: 8.5},
-  {id: 1, nome: "Dolly", preco: 6.5}
+  {id: 1, nome: "Coca-Cola", preco: 10.5, img: "\u{1F964}"},
+  {id: 2, nome: "Pepsi", preco: 9.5, img: "\u{1F964}"},
+  {id: 3, nome: "Fanta", preco: 8.5, img: "\u{1F964}"},
+  {id: 4, nome: "Dolly", preco: 6.5, img: "\u{1F964}"}
 ]
 
 //const gradientColors = ['navy', 'blue', 'cyan'];
@@ -770,11 +770,12 @@ export default function Index() {
   return (
     <View
       //colors = {gradientColors}
-      style = {styles.container}>
+      style = {styles.container}
+      >
 
       <ListaProdutos produtos={produto}></ListaProdutos>
     
-     // {/* {produto.map((p) => (
+      {/* {produto.map((p) => (
         // <View key = {p.id}>
         //   <Text style = {styles.text}>{p.nome + " \u{1F964}"}</Text>
         //   <Text style = {styles.textSmall}>{"R$ " + p.preco}</Text>
@@ -798,24 +799,24 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "navy"
+    //justifyContent: "center",
+    //alignItems: "center",
+    backgroundColor: "grey"
   },
-  text: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold"
-  },
-  textSmall: {
-    color: "black",
-    fontSize: 15,
-    fontWeight: "bold",
-    marginBottom: 5,
-    textAlign: "center"
-  },
+  // text: {
+  //   color: "white",
+  //   fontSize: 30,
+  //   fontWeight: "bold"
+  // },
+  // textSmall: {
+  //   color: "black",
+  //   fontSize: 15,
+  //   fontWeight: "bold",
+  //   marginBottom: 5,
+  //   textAlign: "center"
+  // },
   buttonStyle: {
-    marginTop: 10,
+    marginBottom: 50,
     backgroundColor: "black",
     padding: 15,
     borderRadius: 20
@@ -826,4 +827,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
 
