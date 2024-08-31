@@ -752,13 +752,15 @@ import LinearGradient from "react-native-linear-gradient";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { useAnimatedKeyboard } from "react-native-reanimated";
 import ListaProdutos from "./Componentes/Adaptadores/ListaProdutos";
+import axios from 'axios'
+import { useEffect } from "react";
 
-const produto = [
-  {id: 1, nome: "Coca-Cola", preco: 10.5, img: "\u{1F964}"},
-  {id: 2, nome: "Pepsi", preco: 9.5, img: "\u{1F964}"},
-  {id: 3, nome: "Fanta", preco: 8.5, img: "\u{1F964}"},
-  {id: 4, nome: "Dolly", preco: 6.5, img: "\u{1F964}"}
-]
+// const produto = [
+//   {id: 1, nome: "Coca-Cola", preco: 10.5, img: "\u{1F964}"},
+//   {id: 2, nome: "Pepsi", preco: 9.5, img: "\u{1F964}"},
+//   {id: 3, nome: "Fanta", preco: 8.5, img: "\u{1F964}"},
+//   {id: 4, nome: "Dolly", preco: 6.5, img: "\u{1F964}"}
+// ]
 
 //const gradientColors = ['navy', 'blue', 'cyan'];
 
@@ -767,13 +769,25 @@ export default function Index() {
   let [contador, setContador] = useState(0);
   //let [fuga, setFuga] = useState(0);
 
+  let [produtos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    carregaProdutos()
+  }, [])
+
+  function carregaProdutos(){
+    axios.get('https://api-docker-2t8m.onrender.com/api/produtos').then((resp) => {
+      setProdutos(resp.data);
+    })
+  }
+
   return (
     <View
       //colors = {gradientColors}
       style = {styles.container}
       >
 
-      <ListaProdutos produtos={produto}></ListaProdutos>
+      <ListaProdutos produtos={produtos}></ListaProdutos>
     
       {/* {produto.map((p) => (
         // <View key = {p.id}>
@@ -787,6 +801,8 @@ export default function Index() {
       </TouchableOpacity>
 
       {/* title = {"Quantidade de Clicks " + contador.toString()} */}
+
+      <CadastroProduto/>
 
     </View>
   );
